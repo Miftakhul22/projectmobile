@@ -23,7 +23,7 @@ class DaftarTamu{
   String telpon;
   
   
-  DataCustomer({ this.ID, this.name, this.country, this.telpon});
+  DataTamu({ this.ID, this.name, this.country, this.telpon});
   
 }
 
