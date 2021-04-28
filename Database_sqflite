@@ -1,0 +1,95 @@
+#import 'package:flutter/material.dart';
+void main() => runApp(App());
+
+class App extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: ' BTS BIRTHDAY PARTY online ',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(' Miftakhul Jannah/6SIA10'),
+        ),
+        body: Daftar Tamu(),
+      ),
+    );
+  }
+}
+
+class DaftarTamu{
+  
+  String ID;
+  String name;
+  String country;
+  String telpon;
+  
+  
+  DataCustomer({ this.ID, this.name, this.country, this.telpon});
+  
+}
+
+// class Tamu
+class Tamu extends StatefulWidget {
+  _MyappState createState() => _MyappState();
+}
+
+class _MyappState extends State<people> {
+  //deklarasi variabel
+  final txtidtamu = TextEditingController();
+  final txtnametamu = TextEditingController();
+  final txtcountry = TextEditingController();
+  final txttelpon = TextEditingController();
+
+  List<Widget> data = [];
+
+  onInput() {
+    setState(() {
+      data.add(ListTile(
+        leading: Text(txtidtamu.text),
+        title: Text(txtnametamu.text),
+        subtitle: Text(txtcountry.text),
+        trailing: Text(txttelpon.text),
+      ));
+      txtidtamu.clear();
+      txtnametamu.clear();
+      txtcountry.clear();
+      txttelpon.clear();
+    });
+  }
+
+  Widget build(BuildContext context) {
+    return ListView(
+      children: <Widget>[
+        new Container(
+          padding: EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+           
+              TextField(
+                controller: txtidtamu,
+                decoration: InputDecoration(hintText: 'ID'),
+              ),
+              TextField(
+                controller: txtnametamu,
+                decoration: InputDecoration(hintText: 'Name'),
+              ),
+              TextField(
+                controller: txtcountry,
+                decoration: InputDecoration(hintText: 'Country'),
+              ),
+               TextField(
+                controller: txttelpon,
+                decoration: InputDecoration(hintText: 'Telpon'),
+              ),
+              Divider(height: 5.0),
+              ElevatedButton(child: Text("INPUT"), onPressed: onInput),
+            ],
+          ),
+        ),
+        new Column(
+          children: data,
+        )
+      ],
+    );
+  }
+}
